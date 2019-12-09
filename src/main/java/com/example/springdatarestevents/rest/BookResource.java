@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springdatarestevents.beans.Book;
@@ -18,5 +19,10 @@ public class BookResource {
 	@GetMapping("books")
 	public List<Book> getAll() {
 		return bookService.getAllBooks();
+	}
+
+	@PostMapping("addBook")
+	public Book addBook(Book book) {
+		return bookService.addBook(book);
 	}
 }

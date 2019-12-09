@@ -8,7 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Book {
 
 	@Id
@@ -26,7 +28,6 @@ public class Book {
 	@Column
 	private String name;
 	@ManyToOne
-	@JoinColumn(name = "authorId", nullable = false)
-	@JsonBackReference
+	@JoinColumn(name = "author_Id", nullable = false)
 	private Author author;
 }

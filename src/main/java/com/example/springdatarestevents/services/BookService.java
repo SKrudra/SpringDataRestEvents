@@ -15,6 +15,10 @@ public class BookService {
 	private BookRepository bookRepository;
 
 	public List<Book> getAllBooks() {
-		return (List<Book>) bookRepository.findAll();
+		return bookRepository.findAll();
+	}
+
+	public Book addBook(Book book) {
+		return bookRepository.save(book);
 	}
 }
